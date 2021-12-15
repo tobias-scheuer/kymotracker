@@ -1,10 +1,17 @@
 import statistics
 import matplotlib.pyplot as plt
 import numpy as np
+from tkinter_functions.TkinterFunctions import simple_tkinter_dialog
 
 class KymoAnalysisTools():
     def __init__(self):
         pass
+
+    def test(self):
+        dic = {"question1": 0,
+                "question2": 0,
+                "question3": 0}
+        print(simple_tkinter_dialog(dic))
 
     def create_lists(self):
         pass
@@ -28,7 +35,7 @@ class KymoAnalysisTools():
                              xlabel_name="position [%]",
                              ylabel_name="amount",
                              bins_list=bins_list)
-        
+
 
     def duration_of_stay(self, arr_x, time1):
         # function to calculate how long the protein stays on the DNA
