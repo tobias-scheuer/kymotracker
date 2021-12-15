@@ -12,8 +12,23 @@ class KymoAnalysisTools():
     def show_all(self):
         pass
 
-    def start_point(self):
-        pass
+    def start_point(self, arr_y, dis1):
+        # function to define the starting point on the DNA
+        percentage = []
+        for i in range(len(arr_y)):                 # go through the kymos
+            for j in range(len(arr_y[i])):                      # goes through the paths
+                if arr_y[i, j, 0] != -5:   # only if the array is not empty save the value for the starting point
+                    start_point = arr_y[i, j, 0]
+                    # append to the list the values (start_point/distance_of the specific kymo) rounded to 2 decimal number
+                    percentage.append(round(start_point / dis1[i], 2))
+
+        bins_list = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        self.plot_histogramm(topic="Position on DNA",
+                             data=percentage,
+                             xlabel_name="position [%]",
+                             ylabel_name="amount",
+                             bins_list=bins_list)
+        
 
     def duration_of_stay(self, arr_x, time1):
         # function to calculate how long the protein stays on the DNA
