@@ -21,8 +21,12 @@ class KymoAnalysisTools():
     def track_movement(self):
         pass
 
-    def plot_histogramm(self):
-        pass
+    def plot_histogramm(self, data: list, xlabel_name: str, ylabel_name: str):
+        plt.hist(data, color="k")
+        plt.title("n = " + str(len(data)))
+        plt.xlabel(xlabel_name)
+        plt.ylabel(ylabel_name)
+        plt.show()
 
     def plot_scatter(self):
         pass
