@@ -869,8 +869,8 @@ filemenu.add_command(label="Undo")
 filemenu.add_separator()
 
 submenu = tkinter.Menu(filemenu)
-submenu.add_command(label="Single File", command=FileFunction._select_file) # lambda to pass arguments to functions
-submenu.add_command(label="Folder", command=FileFunction._select_direct)
+submenu.add_command(label="Single File", command=FileFunction._select_h5_file) # lambda to pass arguments to functions
+submenu.add_command(label="Folder", command=FileFunction._select_h5_directory)
 filemenu.add_cascade(label='H5 to Tiff', menu=submenu, underline=0)
 
 menubar.add_cascade(label="File", menu=filemenu)

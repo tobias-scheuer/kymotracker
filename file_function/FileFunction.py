@@ -17,7 +17,7 @@ def _convert_h5totiff(filename, save_folder):
     kymo.save_tiff(save_folder + "//"+filename+".tiff")
 
 
-def _select_file():
+def _select_h5_file():
     # open the browser to select your file
     filename = filedialog.askopenfilename(title="Which file do you want to convert")
     # open the browser to select the saving directory
@@ -26,7 +26,7 @@ def _select_file():
     # saying that stuff will be saved as the h5 file!
 
 
-def _select_direct():
+def _select_h5_directory():
     # open the browser to select your directory
     fileorder = filedialog.askdirectory(title="Select folder with files you want to convert")
     # open the browser to select the saving directory
