@@ -21,15 +21,25 @@ class KymoAnalysisTools():
     def track_movement(self):
         pass
 
-    def plot_histogramm(self, data: list, xlabel_name: str, ylabel_name: str):
-        plt.hist(data, color="k")
-        plt.title("n = " + str(len(data)))
+    def plot_histogramm(self, topic: str, data: list, xlabel_name: str, ylabel_name: str, bins_list: list):
+        plt.hist(data, color="k", bins=bins_list)
+        plt.title(topic + " (n = " + str(len(data))+")")
+        fig_text = "mean: " + str(round(statistics.mean(data), 2)) + "\nstd: " + str(
+            round(statistics.stdev(data), 2))
+        plt.figtext(.7, .7, fig_text)
         plt.xlabel(xlabel_name)
         plt.ylabel(ylabel_name)
         plt.show()
 
-    def plot_scatter(self):
-        pass
+
+    def plot_scatter(self, data_x: list, data_y: list):
+        plt.scatter(data_x, data_y)
+        fig_text = ("mean: " + str(round(statistics.mean(data_x), 2)) + "\nstd: " + str(
+            round(statistics.stdev(data_x), 2)))
+        plt.figtext(.8, .8, fig_text)
+        plt.xlim(-30, 30)
+        plt.title("XPB w.o. ATP")
+        plt.show()
 
 
 
