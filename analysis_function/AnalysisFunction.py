@@ -7,11 +7,8 @@ class KymoAnalysisTools():
     def __init__(self):
         pass
 
-    def test(self):
-        dic = {"question1": 0,
-                "question2": 0,
-                "question3": 0}
-        print(simple_tkinter_dialog(dic))
+    def user_question_dialog(self, question_dictionary):
+        return simple_tkinter_dialog(question_dictionary)
 
     def create_lists(self):
         pass
@@ -63,8 +60,25 @@ class KymoAnalysisTools():
                              ylabel_name="amount",
                              bins_list=bins_list)
 
-    def track_movement(self):
-        pass
+    def track_movement(self, arr_x, arr_y):
+        # ask for your desired variables that you want to change from analysis to analysis
+        question_dictionary = {"track_iteration": 30,
+                               "track_distance": 30,
+                               "upper_limit": 4,
+                               "lower_limit": -4
+                               }
+        self.user_question_dialog(question_dictionary)
+        # get the dimensions of the numpy array
+        dimensions = arr_x.shape
+        # declare some lists
+        values_x = []
+        values_y = []
+        differences = []
+        all_differences = []
+        all_differences_total = []
+        all_differences_y = []
+        y_plot = 0
+        perc_mobile_ele = []
 
     def plot_histogramm(self, topic: str, data: list, xlabel_name: str, ylabel_name: str, bins_list: list):
         plt.hist(data, color="k", bins=bins_list)
