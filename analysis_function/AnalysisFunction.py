@@ -27,7 +27,7 @@ class KymoAnalysisTools():
                     percentage.append(round(start_point / dis1[i], 2))
 
         bins_list = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-        self.plot_histogramm(topic="Position on DNA",
+        self.plot_histogramm(title="Position on DNA",
                              data=percentage,
                              xlabel_name="position [%]",
                              ylabel_name="amount",
@@ -54,7 +54,7 @@ class KymoAnalysisTools():
                             duration.append(round((end_point1 - start_point1) * time1[i], 2))
 
         bins_list = [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500]
-        self.plot_histogramm(topic="Duration on DNA",
+        self.plot_histogramm(title="Duration on DNA",
                              data=duration,
                              xlabel_name="time [sec]",
                              ylabel_name="amount",
@@ -80,9 +80,27 @@ class KymoAnalysisTools():
         y_plot = 0
         perc_mobile_ele = []
 
-    def plot_histogramm(self, topic: str, data: list, xlabel_name: str, ylabel_name: str, bins_list: list):
+        # plot for the mobile elements
+        bins_list = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        self.plot_histogramm(title="mobile elements",
+                             data=perc_mobile_ele,
+                             xlabel_name="perc of mobile elements",
+                             ylabel="amount",
+                             bins_list=bins_list
+                             )
+
+        self.plot_scatter(title="differences in movement",
+                          data_x=all_differences,
+                          data_y=all_differences_y)
+
+        self.plot_scatter(title="absolute differences in movement",
+                          data_x=all_differences_total,
+                          data_y=all_differences_y)
+
+
+    def plot_histogramm(self, title: str, data: list, xlabel_name: str, ylabel_name: str, bins_list: list):
         plt.hist(data, color="k", bins=bins_list)
-        plt.title(topic + " (n = " + str(len(data))+")")
+        plt.title(title + " (n = " + str(len(data))+")")
         fig_text = "mean: " + str(round(statistics.mean(data), 2)) + "\nstd: " + str(
             round(statistics.stdev(data), 2))
         plt.figtext(.7, .7, fig_text)
@@ -91,8 +109,9 @@ class KymoAnalysisTools():
         plt.show()
 
 
-    def plot_scatter(self, data_x: list, data_y: list):
+    def plot_scatter(self, title: str, data_x: list, data_y: list):
         plt.scatter(data_x, data_y)
+        plt.title(title)
         fig_text = ("mean: " + str(round(statistics.mean(data_x), 2)) + "\nstd: " + str(
             round(statistics.stdev(data_x), 2)))
         plt.figtext(.8, .8, fig_text)
