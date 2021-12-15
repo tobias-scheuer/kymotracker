@@ -16,7 +16,13 @@ class KymoAnalysisTools():
         pass
 
     def duration_of_stay(self):
-        pass
+        data = []
+        bins_list = [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500]
+        self.plot_histogramm(topic="Duration on DNA",
+                             data=data,
+                             xlabel_name="time [sec]",
+                             ylabel_name="amount",
+                             bins_list=bins_list)
 
     def track_movement(self):
         pass
@@ -324,7 +330,6 @@ def duration_of_stay(arr_x, time1):
     plt.figtext(.7,.7, fig_text)
     plt.xlabel("sec")
     plt.show()
-
 
     return duration
 
