@@ -13,6 +13,8 @@ from image_function import ImageFunction
 from file_function import FileFunction
 from analysis_function import AnalysisFunction
 
+
+# Global variables should be avoided!
 filename = ""
 # global variable
 original_arr = numpy.array(1)
@@ -896,11 +898,12 @@ submenu.add_command(label="Blue", command= lambda : choose_color(2))
 imagemenu.add_cascade(label='Color', menu=submenu, underline=0)
 
 def analyse_results(analysis):
-    #fileorder = filedialog.askopenfile()
-    # ask for the file and then go through it with your functions!
+    # ask for the file and then calls your desired function!
     filename = filedialog.askopenfilename()
     AnalysisFunction.starting_function(filename, analysis)
     # find a way to extract all the informations into an Excel file!
+
+
 
 # analysismenu
 analysismenu = tkinter.Menu(menubar, tearoff=0)
@@ -909,11 +912,8 @@ analysismenu.add_command(label="Duration on DNA", command=lambda: analyse_result
 analysismenu.add_command(label="Movement on DNA", command=lambda: analyse_results("movement"))
 analysismenu.add_command(label="Pos.; Dur.; Mov.", command=lambda: analyse_results("all"))
 menubar.add_cascade(label="Analysis", menu=analysismenu)
-
-
 root.config(menu=menubar)
 
-button_f = tkinter.Button(root, text="Hello")
-#root.bind('f', func)
+
 
 tkinter.mainloop()
