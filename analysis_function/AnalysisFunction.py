@@ -3,6 +3,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+
+
+
+
 def create_lists(data):
     # this is the function that gets the data from the textfile and convert it into some useful list to work with later on
 
