@@ -2,6 +2,30 @@ import statistics
 import matplotlib.pyplot as plt
 import numpy as np
 
+class KymoAnalysisTools():
+    def __init__(self):
+        pass
+
+    def create_lists(self):
+        pass
+
+    def show_all(self):
+        pass
+
+    def start_point(self):
+        pass
+
+    def duration_of_stay(self):
+        pass
+
+    def track_movement(self):
+        pass
+
+    def plot_histogramm(self):
+        pass
+
+    def plot_scatter(self):
+        pass
 
 
 
