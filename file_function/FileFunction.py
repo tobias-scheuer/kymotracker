@@ -22,32 +22,19 @@ def _select_h5_file():
     filename = filedialog.askopenfilename(title="Which file do you want to convert")
     # open the browser to select the saving directory
     save_folder = filedialog.askdirectory(title="Select folder for Save")
+    # convert the h5 to tiff and saves it
     _convert_h5totiff(filename, save_folder)
-    # saying that stuff will be saved as the h5 file!
 
 
 def _select_h5_directory():
-    # open the browser to select your directory
-    fileorder = filedialog.askdirectory(title="Select folder with files you want to convert")
+    # open the browser to select the directory with your files
+    target_directory = filedialog.askdirectory(title="Select folder with files you want to convert")
     # open the browser to select the saving directory
-    save_folder = filedialog.askdirectory(title="Select folder to save Tiffs in")
-    # ask ones for the save folder! and then iterate through every single file in that folder
-    files = glob.glob(fileorder+"/*")
-    liste = []
+    saving_directory = filedialog.askdirectory(title="Select folder to save Tiffs in")
+    # iterate through every single file in the target_directory, convert the image and saves it in the saving_directory
+    files = glob.glob(target_directory+"/*")
     for filenames in files:
-        #erst stutzen und dann gucken sobald etwas kommt, was nicht in Liste ist
-        final_filename = fileorder+"/"+filenames[len(fileorder)+1:]
-        #substract file order (len(fileorder)
-        _convert_h5totiff(final_filename, save_folder)
-
-
-
-
-
-
-
-
-
-
-
-
+        # get name of the h5 file
+        final_filename = target_directory+"/"+filenames[len(target_directory)+1:]
+        # convert the h5 to tiff and saves it
+        _convert_h5totiff(final_filename, saving_directory)
