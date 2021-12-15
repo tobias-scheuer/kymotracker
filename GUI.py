@@ -1,18 +1,17 @@
 #import of modules
 import tkinter
 from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-from matplotlib.backend_bases import key_press_handler
 import re
-import glob
 import matplotlib.pyplot as plt
 import numpy
 from skimage import io
 from tkinter import filedialog
 import lumicks.pylake as lk
-from tkinter.ttk import Frame, Button, Style
-from tkinter import Tk, RIGHT, BOTH, RAISED
-import FileFunction, AnalysisFunction, ImageFunction
-
+from tkinter.ttk import Frame
+from tkinter import RAISED
+from image_function import ImageFunction
+from file_function import FileFunction
+from analysis_function import AnalysisFunction
 
 filename = ""
 # global variable
