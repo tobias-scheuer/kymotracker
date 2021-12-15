@@ -15,11 +15,28 @@ class KymoAnalysisTools():
     def start_point(self):
         pass
 
-    def duration_of_stay(self):
-        data = []
+    def duration_of_stay(self, arr_x, time1):
+        # function to calculate how long the protein stays on the DNA
+        duration = []
+        for i in range(len(arr_x)):     # goes through the single kymos
+            for j in range(len(arr_x[i])):  # goes through the  paths
+                if arr_x[i, j, 0] != -5:    # looks if the paths is empty, if not continue
+                    for k in range(len(arr_x[i, j])):
+                        # iterate through the single points and saves the first one as start_point1
+                        start_point1 = arr_x[i, j, 0]
+                        # both following if sentences are there to stop when the paths ends (either with -5 or the last
+                        # entry)
+                        if arr_x[i, j, k] == -5:
+                            end_point1 = arr_x[i, j, k - 1]     # get the end_point from the array
+                            duration.append(round((end_point1 - start_point1) * time1[i], 2)) # calculate the duration
+                            break
+                        if k == len(arr_x[i, j]):
+                            end_point1 = arr_x[i, j, k]
+                            duration.append(round((end_point1 - start_point1) * time1[i], 2))
+
         bins_list = [0, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300, 325, 350, 375, 400, 425, 450, 475, 500]
         self.plot_histogramm(topic="Duration on DNA",
-                             data=data,
+                             data=duration,
                              xlabel_name="time [sec]",
                              ylabel_name="amount",
                              bins_list=bins_list)
