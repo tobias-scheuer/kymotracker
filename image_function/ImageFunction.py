@@ -1,20 +1,7 @@
 #import of modules
 import statistics
-import tkinter
-from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg, NavigationToolbar2Tk)
-from matplotlib.backend_bases import key_press_handler
-import re
-import glob
 import matplotlib.pyplot as plt
 import numpy
-from skimage import io
-from tkinter import filedialog
-import lumicks.pylake as lk
-from tkinter.ttk import Frame, Button, Style
-from tkinter import Tk, RIGHT, BOTH, RAISED
-
-
-
 
 
 def calculatebackground(x_start, x_stop, y_start, y_stop, array):
