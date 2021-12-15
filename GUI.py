@@ -903,6 +903,9 @@ def analyse_results(analysis):
     AnalysisFunction.starting_function(filename, analysis)
     # find a way to extract all the informations into an Excel file!
 
+def test(s):
+    test = AnalysisFunction.KymoAnalysisTools()
+    test.test()
 
 
 # analysismenu
@@ -911,6 +914,7 @@ analysismenu.add_command(label="Position on DNA", command=lambda: analyse_result
 analysismenu.add_command(label="Duration on DNA", command=lambda: analyse_results("duration"))
 analysismenu.add_command(label="Movement on DNA", command=lambda: analyse_results("movement"))
 analysismenu.add_command(label="Pos.; Dur.; Mov.", command=lambda: analyse_results("all"))
+analysismenu.add_command(label="test", command=lambda: test("ja"))
 menubar.add_cascade(label="Analysis", menu=analysismenu)
 root.config(menu=menubar)
 
