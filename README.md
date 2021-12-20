@@ -7,6 +7,10 @@ Scripts for the kymograph analysis tool.
 - Activate your virtual environemnt:
     - Windows: `env\Scripts\activate.bat`
     - Linux: `source env\bin\activate`
+- Start your GUI using
+    - `python GUI.py`
+- Deactivate your code using:
+    - `deactivate`
 
 ## Install the required packages
 - `pip install -r requirements.txt`
