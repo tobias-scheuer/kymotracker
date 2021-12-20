@@ -389,7 +389,8 @@ def track_movement(arr_x, arr_y):
     plt.title("XPB with ATP abs numbers")
     plt.show()
 
-
+def msd_analysis(arr_x, arr_y):
+    pass
 
 
 def starting_function(filename, analysis):
@@ -404,6 +405,9 @@ def starting_function(filename, analysis):
     if analysis == "duration" or analysis == "all":
         # define duration on DNA
         duration_of_stay(arr_x, time1)
+    if analysis == "MSD" or analysis == "all":
+        # calculate MSD
+        msd_analysis(arr_x, arr_y)
     if analysis == "movement" or analysis == "all":
         # track movement
         track_movement(arr_x, arr_y)

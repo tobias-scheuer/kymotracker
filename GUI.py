@@ -907,6 +907,7 @@ analysismenu = tkinter.Menu(menubar, tearoff=0)
 analysismenu.add_command(label="Position on DNA", command=lambda: analyse_results("position"))
 analysismenu.add_command(label="Duration on DNA", command=lambda: analyse_results("duration"))
 analysismenu.add_command(label="Movement on DNA", command=lambda: analyse_results("movement"))
+analysismenu.add_command(label="MSD analysis", command=lambda: analyse_results("MSD"))
 analysismenu.add_command(label="Pos.; Dur.; Mov.", command=lambda: analyse_results("all"))
 menubar.add_cascade(label="Analysis", menu=analysismenu)
 
