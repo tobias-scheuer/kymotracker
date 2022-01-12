@@ -390,7 +390,45 @@ def track_movement(arr_x, arr_y):
     plt.show()
 
 def msd_analysis(arr_x, arr_y):
-    pass
+    # function to calculate the MSD (mean square displacement) to figure out
+    # whether the movement is directed or random
+    # in general it is calculates via
+    # declare some lists
+    values_x = []
+    values_y = []
+    differences = []
+    MSD = []
+    # get the dimensions of the numpy array
+    dimensions = arr_x.shape
+    for i in range(len(arr_x)):
+        # goes through the kymos
+        for j in range(len(arr_x[i])):
+            # goes through the paths
+            # after each paths it clears the list for the next paths
+            values_x.clear()
+            values_y.clear()
+            differences.clear()
+            for k in range(dimensions[2]):
+                # goes through the single coordinates
+                if arr_x[i, j, 0] == -5:
+                    # if paths starts with -5 the array is empty, so we break the loop
+                    break
+                if arr_x[i, j, k] != -5:
+                    # if there is a paths we store the coordinates inside the lists values_x and values_y
+                    values_x.append(arr_y[i, j, k])
+                    values_y.append(arr_y[i, j, k])
+                else:
+                    # use all variables to calculate the MSD according to https://stackoverflow.com/questions/31264591/mean-square-displacement-python
+                    r = np.sqrt(np.square(values_y))
+                    diff = np.diff(r)  # this calculates r(t + dt) - r(t)
+                    diff_sq = diff ** 2
+                    MSD = np.mean(diff_sq)
+        # specify what the plot should look like
+        plt.scatter(values_x, MSD)
+        plt.title("MSD")
+        plt.xlabel("time [s]")
+        plt.ylabel("MSD [nm^2]")
+        plt.show()
 
 
 def starting_function(filename, analysis):
