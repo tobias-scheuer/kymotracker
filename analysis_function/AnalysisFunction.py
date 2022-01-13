@@ -415,15 +415,19 @@ def msd_analysis(arr_x, arr_y):
                     break
                 if arr_x[i, j, k] != -5:
                     # if there is a paths we store the coordinates inside the lists values_x and values_y
-                    values_x.append(arr_y[i, j, k])
+                    values_x.append(arr_x[i, j, k])
                     values_y.append(arr_y[i, j, k])
                 else:
                     # use all variables to calculate the MSD according to https://stackoverflow.com/questions/31264591/mean-square-displacement-python
                     r = np.sqrt(np.square(values_y))
                     diff = np.diff(r)  # this calculates r(t + dt) - r(t)
                     diff_sq = diff ** 2
-                    MSD = np.mean(diff_sq)
+                    MSD = diff_sq
         # specify what the plot should look like
+        MSD = MSD.tolist()
+        print(MSD)
+        print(values_y)
+        print(values_x)
         plt.scatter(values_x, MSD)
         plt.title("MSD")
         plt.xlabel("time [s]")
